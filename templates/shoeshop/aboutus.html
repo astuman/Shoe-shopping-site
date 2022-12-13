@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Shoe shopping site</title>
+  <style media="screen">
+    .footer{
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body style="background-color:#f7f7f7;">
+  {%if request.user.is_authenticated%}
+    {% include "shoeshop/customer_navbar.html" %}
+  {%else%}
+    {% include "shoeshop/navbar.html" %}
+  {%endif%}
+  <br><br><br>
+  <center>
+<h2 style="text-align: center; width: 600px;">
+  This project is build by ALX Software engineers a team of three students.
+  This project is also for portfolio and development purpose
+  </h2>
+  </center>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include "shoeshop/footer.html" %}
+</body>
+<!--
+developed By : sumit kumar
+-->
+
+</html>

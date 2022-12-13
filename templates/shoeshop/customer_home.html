@@ -1,0 +1,108 @@
+{% extends 'shoeshop/customer_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="/static/customer_home.css">
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="slider-container">
+      <div class="menu">
+        <label for="slide-dot-1"></label>
+        <label for="slide-dot-2"></label>
+        <label for="slide-dot-3"></label>
+        <label for="slide-dot-4"></label>
+        <label for="slide-dot-5"></label>
+        <label for="slide-dot-6"></label>
+      </div>
+      
+      <input id="slide-dot-1" type="radio" name="slides" checked>
+        <div class="slide slide-1"></div>
+      
+      <input id="slide-dot-2" type="radio" name="slides">
+        <div class="slide slide-2"></div>
+      
+      <input id="slide-dot-3" type="radio" name="slides">
+        <div class="slide slide-3"></div>
+      <input id="slide-dot-4" type="radio" name="slides">
+        <div class="slide slide-4"></div>
+        <input id="slide-dot-3" type="radio" name="slides">
+        <div class="slide slide-5"></div>
+      <input id="slide-dot-4" type="radio" name="slides">
+        <div class="slide slide-6"></div>
+    </div>
+  </div>
+</div>
+
+
+  {%if products%}
+  <h3 style="text-align:center; color:#3E454C;">{{word}}</h3>
+  <br>
+  
+  <!-- products data start -->
+  <div class="row">
+
+      {% for p in products %}
+      <!-- card1 -->
+      <div class="column">
+      <div class="container page-wrapper" style="width: 450px;">
+        <div class="page-inner">
+          <div class="row">
+            <div class="el-wrapper">
+              <div class="box-up">
+                <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
+                <div class="img-info">
+                  <div class="info-inner">
+                    <span style="background-color:#3e454c; color:fbfbfb;"class="p-company">{{p.name}}</span>
+
+                  </div>
+                  <div class="a-size">{{p.description}}</div>
+                </div>
+              </div>
+
+              <div class="box-down">
+                <div class="h-bg">
+                  <div class="h-bg-inner"></div>
+                </div>
+
+                <a class="cart" href="{% url 'add-to-cart' p.id  %}">
+                  <span class="price">${{p.price}}</span>
+                  <span class="add-to-cart">
+                    <span class="txt"><i class="fa fa-shopping-cart"></i> Add To Cart</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+<!-- card1 end -->
+{% if forloop.counter|divisibleby:"3" %}
+    </div>
+    <div class="row">
+          <br><br><br><br><br>
+{% endif %}
+
+  {% endfor %}
+</div>
+<!-- products data end -->
+
+
+{%else%}
+<h3 style="text-align:center; color:#3E454C;">No Search Found</h3>
+{%endif%}
+
+
+    {%if messages %}
+    {%for message in messages%}
+    alert('{{message}}');
+    {%endfor%}
+    {%endif%}
+<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<!--
+-->
+
+{% endblock content %}

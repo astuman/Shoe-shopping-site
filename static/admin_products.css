@@ -1,0 +1,28 @@
+  a:link {
+    text-decoration: none;
+  }
+
+  h6 {
+    text-align: center;
+  }
+
+  .row {
+    margin: 100px;
+  }
+
+  .float{
+  position:fixed;
+  width:70px;
+  height:70px;
+  bottom:60px;
+  right:60px;
+  background-color:#3eb54d;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 5px 5px 5px #505050;
+}
+
+.my-float{
+  margin-top:22px;
+}
