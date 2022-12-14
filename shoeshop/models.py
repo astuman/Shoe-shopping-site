@@ -18,6 +18,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name=models.CharField(max_length=40)
+    category= models.ForeignKey('category', on_delete=models.CASCADE,null=True)
     quantity=models.CharField(max_length=10, null=True, blank=True)
     product_image= models.ImageField(upload_to='product_image/', null=True, blank=True)
     price = models.PositiveIntegerField()
@@ -49,3 +50,8 @@ class Feedback(models.Model):
     date= models.DateField(auto_now_add=True,null=True)
     def __str__(self):
         return self.name
+class Category(models.Model):
+    brand = models.CharField(max_length=40)
+    gender=models.CharField(max_length=5)
+    def __str__(self):
+        return self.brand

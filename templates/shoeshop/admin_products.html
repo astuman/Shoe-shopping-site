@@ -19,6 +19,7 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Category</th>
           <th>Quantity</th>
           <th>Image</th>
           <th>Price</th>
@@ -31,6 +32,7 @@
 
       <tr>
         <td> {{p.name}}</td>
+        <td> {{p.category}}</td>
         <td>{{p.quantity}}</td>
         <td> <img src="{% static p.product_image.url %}" alt="Product Pic" height="40px" width="40px" /></td>
         
