@@ -18,7 +18,9 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name=models.CharField(max_length=40)
-    category= models.ForeignKey('category', on_delete=models.CASCADE,null=True)
+    brand_name= models.ForeignKey('Brand', on_delete=models.CASCADE,null=True)
+    gender=models.CharField(max_length=5)
+    size=models.IntegerField(null=True)
     quantity=models.CharField(max_length=10, null=True, blank=True)
     product_image= models.ImageField(upload_to='product_image/', null=True, blank=True)
     price = models.PositiveIntegerField()
@@ -43,15 +45,28 @@ class Orders(models.Model):
     status=models.CharField(max_length=50,null=True,choices=STATUS)
 
 
-
 class Feedback(models.Model):
     name=models.CharField(max_length=40)
     feedback=models.CharField(max_length=500)
     date= models.DateField(auto_now_add=True,null=True)
     def __str__(self):
         return self.name
-class Category(models.Model):
-    brand = models.CharField(max_length=40)
-    gender=models.CharField(max_length=5)
+
+class Brand(models.Model):
+    brand_name = models.CharField(max_length=40)
     def __str__(self):
-        return self.brand
+        return self.brand_name
+
+
+   # gender=models.CharField(max_length=5)
+  #  size= models.CharField(max_length=2)
+    
+    # @property
+    # def get_brand(self):
+    #     return self.brand
+    # @property
+    # def get_gender(self):
+    #     return self.gender
+    # @property
+    # def get_size(self):
+    #     return self.size

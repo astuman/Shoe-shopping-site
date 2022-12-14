@@ -7,28 +7,26 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" href="/static/admin_add_products.css">
+  <link rel="stylesheet" href="/static/admin_products.css">
 </head>
 
 <div class="container">
   <div class="panel panel-danger">
     <div class="panel-heading">
-      <h6 class="panel-title">Total Brands</h6>
+      <h6 class="panel-title">Brands</h6>
     </div>
     <table class="table table-hover table-bordered" id="dev-table">
       <thead>
         <tr>
-          <th>Brand Name</th>
-          <th>For whom (Gender)</th>
+          <th>Brand</th>
         </tr>
       </thead>
-      {% for c in category %}
-  {% if c %}
+      {% for b in brand %}
+      {% if b %}
 
       <tr>
-        <td> {{c.brand}}</td>
-        <td>{{c.gender}}</td>
-     </tr>
+        <td> {{b.brand}}</td>
+      </tr>
       {%else%}
       <br><br><br>
       <h1>No Brand still!!</h1>
@@ -38,7 +36,7 @@
   </div>
 </div>
 <!-- add product floating button -->
-<a href="/admin-add-category" class="float">
+<a href="/admin-add-brand" class="float">
 <i class="fa fa-plus my-float"></i>
 </a>
 {% endblock content %}

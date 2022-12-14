@@ -19,8 +19,9 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Category</th>
-          <th>Quantity</th>
+          <th>Brand</th>
+          <th>Gender</th>
+          <th>Size</th>
           <th>Image</th>
           <th>Price</th>
           <th>Description</th>
@@ -28,11 +29,13 @@
         </tr>
       </thead>
       {% for p in products %}
-  {% if p %}
+      {% if p %}
 
       <tr>
         <td> {{p.name}}</td>
-        <td> {{p.category}}</td>
+        <td> {{p.brand_name}}</td>
+        <td> {{p.gender}}</td>
+        <td> {{p.size}}</td>
         <td>{{p.quantity}}</td>
         <td> <img src="{% static p.product_image.url %}" alt="Product Pic" height="40px" width="40px" /></td>
         

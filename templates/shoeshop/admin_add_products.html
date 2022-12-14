@@ -17,14 +17,14 @@
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>ADD PRODUCTS</p>
+        <p>ADD SHOES</p>
       </div>
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="">Product Name</label>
-              {% render_field productForm.name class="form-control" placeholder="Product Name" %}
+              <label for="">Shoe Name</label>
+              {% render_field productForm.name class="form-control" placeholder="Shoe Name" %}
             </div>
             <div class="form-group">
               <label for="">Quantity</label>
@@ -38,8 +38,16 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <label for="">Category</label>
-              {% render_field productForm.category class="form-control" placeholder="Category" %}
+              <label for="">Brand</label>
+              {% render_field brandForm.brand_name class="form-control" placeholder="Brand" %}
+            </div>
+            <div class="form-group">
+              <label for="">For whom</label>
+              {% render_field productForm.gender class="form-control" placeholder="Gender, Kids" %}
+            </div>
+            <div class="form-group">
+              <label for="">Size</label>
+              {% render_field productForm.size class="form-control" placeholder="Size" %}
             </div>
             <div class="form-group">
               <label for="">Product Price ($)</label>
@@ -49,8 +57,6 @@
               <label for="">Product Image</label>
               {% render_field productForm.product_image class="form-control" placeholder="product_image" %}
             </div>
-
-
           </div>
         </div>
         <button type="submit" class="btnSubmit">ADD</button>

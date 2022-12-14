@@ -140,23 +140,21 @@ def admin_add_product_view(request):
     return render(request,'shoeshop/admin_add_products.html',{'productForm':productForm})
 
 @login_required(login_url='adminlogin')
-def admin_category_view(request):
-    category=models.Category.objects.all()
-    return render(request,'shoeshop/admin_category.html',{'category':category})
-
-
+def admin_brand_view(request):
+    brand_name=models.Brand.objects.all()
+    return render(request,'shoeshop/admin_brand.html',{'brand_name':brand_name})
 
 
 # admin add new brand by clicking on 'add brand' button
 @login_required(login_url='adminlogin')
-def admin_add_category_view(request):
-    categoryForm=forms.categoryForm()
+def admin_add_brand_view(request):
+    brandForm=forms.brandForm()
     if request.method=='POST':
-        categoryForm=forms.categoryForm(request.POST, request.FILES)
-        if categoryForm.is_valid():
-            categoryForm.save()
-        return HttpResponseRedirect('admin-category')
-    return render(request, 'shoeshop/admin_add_category.html', {'categoryForm': categoryForm})
+        brandForm=forms.brandForm(request.POST, request.FILES)
+        if brandForm.is_valid():
+            brandForm.save()
+        return HttpResponseRedirect('admin-brand')
+    return render(request, 'shoeshop/admin_add_brand.html', {'brandForm': brandForm})
 
 
 

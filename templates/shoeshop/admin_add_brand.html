@@ -17,26 +17,19 @@
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>ADD Category</p>
+        <p>ADD BRAND</p>
       </div>
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="">Brand Name</label>
-              {% render_field categoryForm.brand class="form-control" placeholder="Brand Name" %}
+              {% render_field brandForm.brand_name class="form-control" placeholder="Brand Name" %}
             </div>
-
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="">For whom</label>
-              {% render_field categoryForm.gender class="form-control" placeholder="Male, Female, Kids" %}
-            </div>
-
           </div>
         </div>
-        <button type="submit" class="btnSubmit">ADD</button>
+        <button type="submit" class="btnSubmit">ADD BRAND</button>
       </div>
     </div>
   </div>
