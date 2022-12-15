@@ -34,13 +34,14 @@
               <label for="">Short Description</label>
               {% render_field productForm.description class="form-control" placeholder="Description" %}
             </div>
+            <div class="form-group">
+              <label for="">Brand</label>
+              {% render_field productForm.brand_name class="form-control" placeholder="Brand" %}
+            </div>
 
           </div>
           <div class="col-md-6">
-            <div class="form-group">
-              <label for="">Brand</label>
-              {% render_field brandForm.brand_name class="form-control" placeholder="Brand" %}
-            </div>
+            
             <div class="form-group">
               <label for="">For whom</label>
               {% render_field productForm.gender class="form-control" placeholder="Gender, Kids" %}

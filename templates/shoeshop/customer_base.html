@@ -1,5 +1,7 @@
 <html>
 {% load static %}
+{% load widget_tweaks %}
+
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,9 +28,14 @@
             <div class="col-sm-3">
                 <h2 style="margin:0px;"><a style="text-decoration:none; color:white;" href="/"><span class="largenav">Simple Ecommerce </span></a></h2>
             </div>
+           
 
             <div class="navbar-search smallsearch col-sm-7 col-xs-11">
               <form  action="/search" method="get">
+                <div>
+                  <input type="text" class="form-control" placeholder="Search" value='{% render_field productForm.brand_name class="form-control" placeholder="Shoe Name" %}'>
+                  
+                </div>
                 <div class="row"> <input class="navbar-input col-xs-11" type="search" placeholder="Search for Products, Brands and more" name="query" id="query">
                   <button class="navbar-button col-xs-1" type="submit">
                     <svg width="15px" height="15px">
@@ -36,6 +43,7 @@
                     </svg>
                   </button>
                 </div>
+               
               </form>
             </div>
 
@@ -46,6 +54,7 @@
         </div>
     </div>
 </div>
+
 <!-- content start-->
 {% block content %}
 

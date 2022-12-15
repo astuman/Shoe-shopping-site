@@ -141,8 +141,8 @@ def admin_add_product_view(request):
 
 @login_required(login_url='adminlogin')
 def admin_brand_view(request):
-    brand_name=models.Brand.objects.all()
-    return render(request,'shoeshop/admin_brand.html',{'brand_name':brand_name})
+    brand=models.Brand.objects.all()
+    return render(request,'shoeshop/admin_brand.html',{'brand':brand})
 
 
 # admin add new brand by clicking on 'add brand' button
@@ -153,7 +153,7 @@ def admin_add_brand_view(request):
         brandForm=forms.brandForm(request.POST, request.FILES)
         if brandForm.is_valid():
             brandForm.save()
-        return HttpResponseRedirect('admin-brand')
+        return HttpResponseRedirect('admin-brands')
     return render(request, 'shoeshop/admin_add_brand.html', {'brandForm': brandForm})
 
 

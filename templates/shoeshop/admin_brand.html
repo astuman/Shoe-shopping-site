@@ -7,7 +7,7 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" href="/static/admin_products.css">
+  <link rel="stylesheet" href="/static/admin_add_products.css">
 </head>
 
 <div class="container">
@@ -15,17 +15,19 @@
     <div class="panel-heading">
       <h6 class="panel-title">Brands</h6>
     </div>
+    <div class="ro">
+      <div class="col-6">
     <table class="table table-hover table-bordered" id="dev-table">
       <thead>
         <tr>
           <th>Brand</th>
         </tr>
       </thead>
+
       {% for b in brand %}
       {% if b %}
-
       <tr>
-        <td> {{b.brand}}</td>
+        <td> {{ b.brand_name }}</td>
       </tr>
       {%else%}
       <br><br><br>
@@ -35,7 +37,10 @@
     </table>
   </div>
 </div>
-<!-- add product floating button -->
+</div>
+</div>
+
+<!-- add brand floating button -->
 <a href="/admin-add-brand" class="float">
 <i class="fa fa-plus my-float"></i>
 </a>
