@@ -240,6 +240,25 @@ def search_view(request):
     return render(request,'shoeshop/index.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
 
 
+def brand_search_view(request):
+    # whatever user write in search box we get in query
+    query = request.GET['query']
+    brands=models.Brand.objects.all().filter(brand__icontains=query)
+    if 'brands' in request.COOKIES:
+        brands = request.COOKIES['brands']
+        counter=brands.split('|')
+        brand_count_in_cart=len(set(counter))
+    else:
+        brand_count_in_cart=0
+
+    # word variable will be shown in html when user click on search button
+    word="Searched Result :"
+
+    if request.user.is_authenticated:
+        return render(request,'shoeshop/customer_home.html',{'products':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
+    return render(request,'shoeshop/index.html',{'products':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
+
+
 # any one can add product to cart, no need of signin
 def add_to_cart_view(request,pk):
     products=models.Product.objects.all()

@@ -24,7 +24,7 @@ class Product(models.Model):
     quantity=models.CharField(max_length=10, null=True, blank=True)
     product_image= models.ImageField(upload_to='product_image/', null=True, blank=True)
     price = models.PositiveIntegerField()
-    description=models.TextField()
+    description=models.TextField({'rows': 3, 'cols': 30})
     def __str__(self):
         return self.name
 
