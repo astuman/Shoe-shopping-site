@@ -9,6 +9,7 @@ from django.conf import settings
 
 def home_view(request):
     products=models.Product.objects.all()
+    brand_name=models.Brand.objects.all()
     if 'product_ids' in request.COOKIES:
         product_ids = request.COOKIES['product_ids']
         counter=product_ids.split('|')
@@ -17,9 +18,24 @@ def home_view(request):
         product_count_in_cart=0
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'shoeshop/index.html',{'products':products,'product_count_in_cart':product_count_in_cart})
+    return render(request,'shoeshop/index.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
     
+def filter_product(request, filt):
+    products=models.Product.objects.get(filt)
+    return HttpResponse(products)
+    #brand_name=models.Brand.objects.all()
 
+    # if 'product_ids' in request.COOKIES:
+    #     product_ids = request.COOKIES['product_ids']
+    #     counter=product_ids.split('|')
+    #     product_count_in_cart=len(set(counter))
+        
+    # else:
+    #     product_count_in_cart=0
+    # if request.user.is_authenticated:
+    #     return HttpResponseRedirect('afterlogin')
+    # return render(request,'shoeshop/brand_show.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
+    
 
 #for showing login button for admin(by sumit)
 def adminclick_view(request):
@@ -240,10 +256,15 @@ def search_view(request):
     return render(request,'shoeshop/index.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
 
 
+def brand_show(request):
+    #return HttpResponse('shoeshop/brand_show.html')
+    brand_name=models.Brand.objects.all()
+    return render(request,'/shoeshop/homebase.html',{'brand_name':brand_name})
+
 def brand_search_view(request):
     # whatever user write in search box we get in query
-    query = request.GET['query']
-    brands=models.Brand.objects.all().filter(brand__icontains=query)
+    query = request.GET['q']
+    brands=models.Brand.objects.all().filter(brand_name__icontains=query)
     if 'brands' in request.COOKIES:
         brands = request.COOKIES['brands']
         counter=brands.split('|')
@@ -255,8 +276,8 @@ def brand_search_view(request):
     word="Searched Result :"
 
     if request.user.is_authenticated:
-        return render(request,'shoeshop/customer_home.html',{'products':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
-    return render(request,'shoeshop/index.html',{'products':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
+        return render(request,'shoeshop/customer_home.html',{'brands':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
+    return render(request,'shoeshop/index.html',{'brands':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
 
 
 # any one can add product to cart, no need of signin

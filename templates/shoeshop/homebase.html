@@ -1,5 +1,7 @@
 <html>
   {% load static %}
+  {% load widget_tweaks %}
+
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,25 +16,21 @@
 <body>
   {%if request.user.is_authenticated%}
     {% include "shoeshop/customer_navbar.html" %}
-  {%else%}
-  
-  <div id="navbar">
+  {% else %}
+   <div id="navbar">
     <div class="container">
         <div class="row row1">
             <ul class="largenav pull-right">
-             <!--try search brand with dropdown button-->
-             <!--search cmpleted-------------->
-            <li class="upper-links dropdown"><a class="links" href="">Brand</a>
-              <ul class="dropdown-menu">
-                  {% for b in brand %}
-                  {% if b %}
-                  <li class="upper-links"><a class="links" href="">{{ b.brand_name }}</a></li>
-                  {% else %}
-                  <li>No Brand still!!</li> 
-                    {% endif %}
-                    {% endfor %}
-              </ul>
-          </li>
+          <li class="upper-links dropdown"><a class="links" href="">Brands</a>
+            <ul class="dropdown-menu">
+              {% for b in brand_name %}   
+              <div class="form-check">
+                <li class="upper-links"><a class="links" href="">{{b}}</a></li>
+              </div> 
+              {% endfor %}
+            </ul>
+        </li>
+       
               <li class="upper-links dropdown"><a class="links" href="">Categories</a>
                 <ul class="dropdown-menu">
                   <div class="form-check">
