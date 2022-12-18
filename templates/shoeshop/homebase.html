@@ -21,15 +21,17 @@
     <div class="container">
         <div class="row row1">
             <ul class="largenav pull-right">
+          <form action="filter" method="get">
           <li class="upper-links dropdown"><a class="links" href="">Brands</a>
             <ul class="dropdown-menu">
               {% for b in brand_name %}   
               <div class="form-check">
-                <li class="upper-links"><a class="links" href="">{{b}}</a></li>
+                <li class="upper-links"><input type="submit" name="filter" id="brand" value="{{b}}">{{b}}</li>
               </div> 
               {% endfor %}
             </ul>
         </li>
+        </form>
        
               <li class="upper-links dropdown"><a class="links" href="">Categories</a>
                 <ul class="dropdown-menu">

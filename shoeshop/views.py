@@ -20,9 +20,13 @@ def home_view(request):
         return HttpResponseRedirect('afterlogin')
     return render(request,'shoeshop/index.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
     
-def filter_product(request, filt):
-    products=models.Product.objects.get(filt)
-    return HttpResponse(products)
+def filter_product(request, filter):
+    #q=request.get(filter)
+    brand=models.Product.objects.get(filter)
+
+    #brand=models.Product.objects.all().filter(brand_name_icontains=q)
+    #return HttpResponse(brand)
+    return render(request, "/", {"brand": brand})
     #brand_name=models.Brand.objects.all()
 
     # if 'product_ids' in request.COOKIES:
@@ -241,6 +245,7 @@ def search_view(request):
     # whatever user write in search box we get in query
     query = request.GET['query']
     products=models.Product.objects.all().filter(name__icontains=query)
+    brand=models.Product.objects.all().filter(name__icontains=query)
     if 'product_ids' in request.COOKIES:
         product_ids = request.COOKIES['product_ids']
         counter=product_ids.split('|')
@@ -252,8 +257,8 @@ def search_view(request):
     word="Searched Result :"
 
     if request.user.is_authenticated:
-        return render(request,'shoeshop/customer_home.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
-    return render(request,'shoeshop/index.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
+        return render(request,'shoeshop/customer_home.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
+    return render(request,'shoeshop/index.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
 
 
 def brand_show(request):
