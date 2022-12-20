@@ -1,0 +1,37 @@
+{% extends 'shoeshop/admin_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+ 
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/static/admin_add_products.css">
+</head>
+<br><br><br><br><br><br>
+<!------ update page for doctor by admin(sumit)  ---------->
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container register-form">
+    <div class="form">
+      <div class="note">
+        <p>ADD CATEGORIES</p>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Category Name</label>
+              {% render_field categoryForm.category class="form-control" placeholder="Category Name" %}
+            </div>
+          </div>
+          </div>
+        </div>
+        <button type="submit" class="btnSubmit">ADD NEW CATEGORY</button>
+      </div>
+    </div>
+</form>
+
+{% endblock content %}

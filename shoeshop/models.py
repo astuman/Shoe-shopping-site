@@ -19,7 +19,7 @@ class Customer(models.Model):
 class Product(models.Model):
     name=models.CharField(max_length=40)
     brand_name= models.ForeignKey('Brand', on_delete=models.CASCADE,null=True)
-    gender=models.CharField(max_length=5)
+    category= models.ForeignKey('Category', on_delete=models.CASCADE,null=True)
     size=models.PositiveIntegerField()
     quantity=models.CharField(max_length=10, null=True, blank=True)
     product_image= models.ImageField(upload_to='product_image/', null=True, blank=True)
@@ -56,3 +56,7 @@ class Brand(models.Model):
     brand_name = models.CharField(max_length=40)
     def __str__(self):
         return self.brand_name
+class Category(models.Model):
+    category = models.CharField(max_length=100)
+    def __str__(self):
+        return self.category

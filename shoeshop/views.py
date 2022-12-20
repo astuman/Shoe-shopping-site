@@ -20,26 +20,35 @@ def home_view(request):
         return HttpResponseRedirect('afterlogin')
     return render(request,'shoeshop/index.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
     
-def filter_product(request, filter):
-    #q=request.get(filter)
-    brand=models.Product.objects.get(filter)
+# def filter_product(request):
+#     q=request.get("brand_name")
+#     #brand=models.Product.objects.get(filter)
 
-    #brand=models.Product.objects.all().filter(brand_name_icontains=q)
-    #return HttpResponse(brand)
-    return render(request, "/", {"brand": brand})
-    #brand_name=models.Brand.objects.all()
+#     brand=models.Product.objects.all().filter(brand_name_icontains=q)
+#     #return HttpResponse(brand)
+#     return render(request, "/", {"brand_name": brand})
 
-    # if 'product_ids' in request.COOKIES:
-    #     product_ids = request.COOKIES['product_ids']
-    #     counter=product_ids.split('|')
-    #     product_count_in_cart=len(set(counter))
-        
-    # else:
-    #     product_count_in_cart=0
-    # if request.user.is_authenticated:
-    #     return HttpResponseRedirect('afterlogin')
-    # return render(request,'shoeshop/brand_show.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
-    
+def filter_brand(request):
+    # whatever user write in search box we get in query
+    query2 = request.GET['query2']
+    query = request.GET['query']
+    products=models.Product.objects.all().filter(name__icontains=query)
+    brand=models.Product.objects.all().filter(name__icontains=query2)
+    if 'product_ids' in request.COOKIES:
+        product_ids = request.COOKIES['product_ids']
+        counter=product_ids.split('|')
+        product_count_in_cart=len(set(counter))
+    else:
+        product_count_in_cart=0
+
+    # word variable will be shown in html when user click on search button
+    word="Searched Result :"
+
+    if request.user.is_authenticated:
+        return render(request,'shoeshop/customer_home.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
+    return render(request,'shoeshop/index.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
+
+
 
 #for showing login button for admin(by sumit)
 def adminclick_view(request):
@@ -176,7 +185,26 @@ def admin_add_brand_view(request):
         return HttpResponseRedirect('admin-brands')
     return render(request, 'shoeshop/admin_add_brand.html', {'brandForm': brandForm})
 
+@login_required(login_url='adminlogin')
+def admin_add_category(request):
+    categoryForm=forms.categoryForm()
+    if request.method=='POST':
+        categoryForm=forms.categoryForm(request.POST, request.FILES)
+        if categoryForm.is_valid():
+            categoryForm.save()
+        return HttpResponseRedirect('admin-categories')
+    return render(request,'shoeshop/admin_add_category.html',{'categoryForm':categoryForm})
 
+@login_required(login_url='adminlogin')
+def admin_category_view(request):
+    category=models.Category.objects.all()
+    return render(request,'shoeshop/admin_category.html',{'category':category})
+
+@login_required(login_url='adminlogin')
+def delete_category_view(request,pk):
+    category=models.Category.objects.get(id=pk)
+    category.delete()
+    return redirect('admin-category')
 
 
 @login_required(login_url='adminlogin')
@@ -243,7 +271,7 @@ def view_feedback_view(request):
 #---------------------------------------------------------------------------------
 def search_view(request):
     # whatever user write in search box we get in query
-    query = request.GET['query']
+    query = request.GET['q']
     products=models.Product.objects.all().filter(name__icontains=query)
     brand=models.Product.objects.all().filter(name__icontains=query)
     if 'product_ids' in request.COOKIES:
@@ -266,23 +294,65 @@ def brand_show(request):
     brand_name=models.Brand.objects.all()
     return render(request,'/shoeshop/homebase.html',{'brand_name':brand_name})
 
+@login_required(login_url='adminlogin')
+def delete_brand_view(request,pk):
+    brand=models.Brand.objects.get(id=pk)
+    brand.delete()
+    return redirect('admin-brand')
+
 def brand_search_view(request):
     # whatever user write in search box we get in query
-    query = request.GET['q']
-    brands=models.Brand.objects.all().filter(brand_name__icontains=query)
-    if 'brands' in request.COOKIES:
-        brands = request.COOKIES['brands']
-        counter=brands.split('|')
-        brand_count_in_cart=len(set(counter))
+    query = request.GET.get("brand_name")
+    # return HttpResponse(query2)
+    products=models.Product.objects.filter(name__icontains=query).values()
+    #brand=models.Product.objects.all()
+    if 'product_ids' in request.COOKIES:
+        product_ids = request.COOKIES['product_ids']
+        counter=product_ids.split('|')
+        product_count_in_cart=len(set(counter))
     else:
-        brand_count_in_cart=0
+        product_count_in_cart=0
 
     # word variable will be shown in html when user click on search button
     word="Searched Result :"
-
+    #return HttpResponse(products)
     if request.user.is_authenticated:
-        return render(request,'shoeshop/customer_home.html',{'brands':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
-    return render(request,'shoeshop/index.html',{'brands':brands,'word':word,'brand_count_in_cart':brand_count_in_cart})
+         return render(request,'shoeshop/customer_home.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
+    return render(request,'shoeshop/index.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
+
+
+# start search product using category keyword
+def searchbycategory(request):
+    query = request.GET.get("searchbycat")
+    # return HttpResponse(query2)
+    category_list=models.Category.objects.all().filter(category__icontains=query).values()
+    for cat in category_list:
+        if cat:
+            if cat==(models.Product.category):
+                products=models.Product.objects.all().filter(name=cat)
+                if 'product_ids' in request.COOKIES:
+                    product_ids = request.COOKIES['product_ids']
+                    category = request.COOKIES['category']
+                    counter=product_ids.split('|')
+                    product_count_in_cart=len(set(counter))
+                else:
+                    product_count_in_cart=0
+                
+
+                # word variable will be shown in html when user click on search button
+                word="Searched Result :"
+                if request.user.is_authenticated:
+                    return render(request,'shoeshop/customer_home.html',{'products':products,'category':category,'word':word,'product_count_in_cart':product_count_in_cart})
+                return render(request,'shoeshop/customer_home.html',{'products':products,'category':category,'word':word,'product_count_in_cart':product_count_in_cart})
+            else:
+                return render(request,'shoeshop/index.html')
+        else:
+            return render(request,'shoeshop/index.html')
+    return render(request,'shoeshop/index.html')   
+
+
+
+
 
 
 # any one can add product to cart, no need of signin

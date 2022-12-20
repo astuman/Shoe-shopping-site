@@ -21,8 +21,9 @@
         <tr>
           <th>Name</th>
           <th>Brand</th>
-          <th>Gender</th>
+          <th>Category</th>
           <th>Size</th>
+          <th>Quantity</th>
           <th>Image</th>
           <th>Price</th>
           <th>Description</th>
@@ -35,7 +36,7 @@
       <tr>
         <td> {{p.name}}</td>
         <td> {{p.brand_name}}</td>
-        <td> {{p.gender}}</td>
+        <td> {{p.category}}</td>
         <td> {{p.size}}</td>
         <td>{{p.quantity}}</td>
         <td> <img src="{% static p.product_image.url %}" alt="Product Pic" height="40px" width="40px" /></td>

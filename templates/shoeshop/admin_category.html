@@ -21,21 +21,21 @@
     <table class="table table-hover table-bordered" id="dev-table">
       <thead>
         <tr>
-          <th>Brand</th>
+          <th>Categories</th>
         </tr>
       </thead>
 
-      {% for b in brand %}
-      {% if b %}
+      {% for c in category %}
+      {% if c %}
       <tr>
-        <td> {{ b.brand_name }}</td>
+        <td> {{ c.category }}</td>
         <td>
           <a class="btn btn-danger btn-xs" href=""><span class="glyphicon glyphicon-trash"></span></a>
         </td>
       </tr>
       {%else%}
       <br><br><br>
-      <h1>No Brand still!!</h1>
+      <h1>No Category still!!</h1>
       {% endif %}
       {% endfor %}
     </table>
@@ -45,7 +45,7 @@
 </div>
 
 <!-- add brand floating button -->
-<a href="/admin-add-brand" class="float">
+<a href="/admin-add-category" class="float">
 <i class="fa fa-plus my-float"></i>
 </a>
 {% endblock content %}

@@ -12,9 +12,10 @@ urlpatterns = [
     path('contactus', views.contactus_view,name='contactus'),
     path('search', views.search_view,name='search'),
     path('',views.brand_show,name=''),
-    path(r'^(?P<filter>[\w-]+)/$', views.filter_product, name='filter'),
-    #path('brands', views.filter_product, name='brandsearch'),
+    #path(r'^(?P<filter>[\w-]+)/$', views.filter_product, name='filter'),
+    path('filter_brand', views.filter_brand),
     path('brand_search', views.brand_search_view,name='brand_search'),
+    path("searchbycategory", views.searchbycategory,name='searchbycategory'),
     path('send-feedback', views.send_feedback_view,name='send-feedback'),
     path('view-feedback', views.view_feedback_view,name='view-feedback'),
 
@@ -27,7 +28,12 @@ urlpatterns = [
     path('update-customer/<int:pk>', views.update_customer_view,name='update-customer'),
 
     path('admin-products', views.admin_products_view,name='admin-products'),
+    path('admin-categories', views.admin_category_view,name='admin-categories'),
+
     path('admin-add-product', views.admin_add_product_view,name='admin-add-product'),
+    path('admin-add-category', views.admin_add_category,name='admin-add-category'),
+    path('delete-brand/<int:pk>', views.delete_brand_view,name='delete-brand'),
+    path('delete-category/<int:pk>', views.delete_category_view,name='delete-category'),
     path('delete-product/<int:pk>', views.delete_product_view,name='delete-product'),
     path('update-product/<int:pk>', views.update_product_view,name='update-product'),
 

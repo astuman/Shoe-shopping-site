@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shoeshop',
     'widget_tweaks',
-
 ]
 
 MIDDLEWARE = [
