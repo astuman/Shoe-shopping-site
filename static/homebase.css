@@ -1,10 +1,10 @@
 body {
-    background-color: #4747;
+    background-color: rgba(130, 229, 247, 0.467);
 }
 
 #navbar {
-    background-color: #474747;
-    color: black;
+    background-color: #6cce2b;
+    color: rgb(37, 212, 31);
 }
 
 .row1 {
@@ -54,7 +54,7 @@ body {
 
 .cart-button:hover {
     text-decoration: none;
-    color: #fff;
+    color: rgb(253, 105, 105);
     cursor: pointer
 }
 

@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="/static/customerlogin.css">
   </head>
   <body>
+    <div style="background-color: rgba(0, 0, 0, 0.658);">
     {% include "shoeshop/navbar.html" %}
+    </div>
     <div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <form class="box" method="post">
                   {% csrf_token %}
-                    <h1>Customer Login</h1>
+                    <h1>Login</h1>
                     
                                {% render_field form.username class="form-control" placeholder="Username" autocomplete="off" %}
                                {% render_field form.password class="form-control" placeholder="Password" %}

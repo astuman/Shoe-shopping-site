@@ -3,7 +3,7 @@ body {
 }
 
 #navbar {
-    background-color: #3e454c;
+    background-color: #12c74e;
     color: black;
 }
 
@@ -25,8 +25,8 @@ body {
 }
 
 .navbar-button {
-    background-color: #e5bc41;
-    border: 1px solid #e5bc41;
+    background-color:#b2eff1;
+    border: 1px solid #b2eff1;
     border-radius: 0 2px 2px 0;
     color: #565656;
     padding: 10px 0;

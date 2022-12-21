@@ -13,7 +13,7 @@ urlpatterns = [
     path('search', views.search_view,name='search'),
     path('',views.brand_show,name=''),
     #path(r'^(?P<filter>[\w-]+)/$', views.filter_product, name='filter'),
-    path('filter_brand', views.filter_brand),
+    #path('filter_brand', views.filter_brand),
     path('brand_search', views.brand_search_view,name='brand_search'),
     path("searchbycategory", views.searchbycategory,name='searchbycategory'),
     path('send-feedback', views.send_feedback_view,name='send-feedback'),
@@ -47,7 +47,7 @@ urlpatterns = [
 
 
     path('customersignup', views.customer_signup_view),
-    path('customerlogin', LoginView.as_view(template_name='shoeshop/customerlogin.html'),name='customerlogin'),
+    path('login', LoginView.as_view(template_name='shoeshop/login.html'),name='login'),
     path('customer-home', views.customer_home_view,name='customer-home'),
     path('my-order', views.my_order_view,name='my-order'),
     # path('my-order', views.my_order_view2,name='my-order'),

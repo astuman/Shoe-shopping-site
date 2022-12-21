@@ -2,7 +2,21 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="/static/index.css">
+<style>
 
+.slide-1 {
+background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
+}
+.slide-2 {
+background-image: url("{% static 'product_image/banner-shoe-discount.jpeg' %}");
+}
+.slide-3 {
+background-image: url("{% static 'product_image/big sale.jpeg' %}");
+}
+.slide-4 {
+background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
+}
+</style>
 <div class="row">
   <div class="col-md-12">
     <div class="slider-container">
@@ -12,7 +26,6 @@
         <label for="slide-dot-3"></label>
         <label for="slide-dot-4"></label>
       </div>
-      
       <input id="slide-dot-1" type="radio" name="slides" checked>
         <div class="slide slide-1"></div>
       
@@ -27,58 +40,61 @@
   </div>
 </div>
 
+
 {%if products%}
+
 <h3 style="text-align:center; color:#3E454C;">{{word}}</h3>
 <br>
 
 <!-- products data start -->
   <div class="row">
-
       {% for p in products %}
       <!-- card1 -->
       <div class="column">
-      <div class="container page-wrapper" style="width: 450px;">
-        <div class="page-inner">
-          <div class="row">
-            <div class="el-wrapper">
-              <div class="box-up">
-                <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
-                <div class="img-info">
-                  <div class="info-inner">
-                    <span style="background-color:#3e454c; color:fbfbfb;"class="p-company">{{p.brand_name}}</span>
-                    <span style="background-color:#3e454c; color:fbfbfb;"class="p-company">{{p.name}}</span>
+        <div class="container page-wrapper" style="width: 450px;">
+          <div {{p.brand_name}} class="page-inner">
+            <div class="row">
+              <div class="el-wrapper">
+                <div class="box-up">
+                  <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
+                  <div class="img-info">
+                    <div class="info-inner">
+                      <span style="background-color:#3e454c; color:fbfbfb;"class="p-company">Brand:{{p.brand_name}}</span>
+                      <span style="background-color:#3e454c; color:fbfbfb;"class="p-company">Name: {{p.name}}</span>
+                    </div>
+                    <div class="a-size">{{p.description}}<br>
+                      Size:  {{p.size}}
+                    </div>
+                    
                   </div>
-                  <div class="a-size">{{p.description}}</div>
+                 
                 </div>
-              </div>
-
-              <div class="box-down">
-                <div class="h-bg">
-                  <div class="h-bg-inner"></div>
+  
+                <div class="box-down">
+                  <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                  </div>
+                  <a class="cart" href="{% url 'add-to-cart' p.id  %}">
+                    <span class="price">${{p.price}}</span>
+                    <span class="add-to-cart">
+                      <span class="txt"><i class="fa fa-shopping-cart"></i> Add To Cart</span>
+                    </span>
+                  </a>
                 </div>
-                {{p.brand_name}}
-                <a class="cart" href="{% url 'add-to-cart' p.id  %}">
-                  <span class="price">${{p.price}}</span>
-                  <span class="add-to-cart">
-                    <span class="txt"><i class="fa fa-shopping-cart"></i> Add To Cart</span>
-                  </span>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
 <!-- card1 end -->
 {% if forloop.counter|divisibleby:"3" %}
     </div>
 
-    <div class="row">
-
-          <br><br><br><br><br>
+  <div class="row">
+          <br><br><br>
 {% endif %}
   {% endfor %}
-</div>
+  </div>
 <!-- products data end-->
 {%else%}
 <h3 style="text-align:center; color:#3E454C;">No Search Found</h3>
@@ -93,10 +109,4 @@
 
 <br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-<!--
-developed By : sumit kumar
--->
-
 {% endblock content %}

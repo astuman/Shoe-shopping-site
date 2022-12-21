@@ -6,6 +6,8 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
 from django.conf import settings
+from django.db.models import Q
+
 
 def home_view(request):
     products=models.Product.objects.all()
@@ -270,23 +272,27 @@ def view_feedback_view(request):
 #------------------------ PUBLIC CUSTOMER RELATED VIEWS START ---------------------
 #---------------------------------------------------------------------------------
 def search_view(request):
-    # whatever user write in search box we get in query
-    query = request.GET['q']
-    products=models.Product.objects.all().filter(name__icontains=query)
-    brand=models.Product.objects.all().filter(name__icontains=query)
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
-    else:
-        product_count_in_cart=0
+    if request.method == 'GET':
+        # whatever user write in search box we get in query
+        query = request.GET['q']
+        if query is not None:
+            lookups = Q(name__icontains=query) | Q(size__icontains=query) | Q(price__icontains=query)
+            nameproducts = models.Product.objects.filter(lookups).distinct()
 
-    # word variable will be shown in html when user click on search button
-    word="Searched Result :"
+            #catproducts=models.Product.objects.filter(category__icontains=query)
+            if 'product_ids' in request.COOKIES:
+                product_ids = request.COOKIES['product_ids']
+                counter=product_ids.split('|')
+                product_count_in_cart=len(set(counter))
+            else:
+                product_count_in_cart=0
 
-    if request.user.is_authenticated:
-        return render(request,'shoeshop/customer_home.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
-    return render(request,'shoeshop/index.html',{'products':products,'brand':brand,'word':word,'product_count_in_cart':product_count_in_cart})
+            # word variable will be shown in html when user click on search button
+            word="Searched Result :"
+
+            if request.user.is_authenticated:
+                return render(request,'shoeshop/customer_home.html',{'products':nameproducts,'word':word,'product_count_in_cart':product_count_in_cart})
+            return render(request,'shoeshop/index.html',{'products':nameproducts,'word':word,'product_count_in_cart':product_count_in_cart})
 
 
 def brand_show(request):
@@ -304,7 +310,7 @@ def brand_search_view(request):
     # whatever user write in search box we get in query
     query = request.GET.get("brand_name")
     # return HttpResponse(query2)
-    products=models.Product.objects.filter(name__icontains=query).values()
+    products=models.Product.objects.filter(name=query)
     #brand=models.Product.objects.all()
     if 'product_ids' in request.COOKIES:
         product_ids = request.COOKIES['product_ids']
@@ -325,10 +331,14 @@ def brand_search_view(request):
 def searchbycategory(request):
     query = request.GET.get("searchbycat")
     # return HttpResponse(query2)
-    category_list=models.Category.objects.all().filter(category__icontains=query).values()
+    category_list=models.Category.objects.filter(category=query)
+    
     for cat in category_list:
+        
         if cat:
-            if cat==(models.Product.category):
+            
+            if cat == models.Product.objects.filter(category=category_list):
+                #return HttpResponse(cat)
                 products=models.Product.objects.all().filter(name=cat)
                 if 'product_ids' in request.COOKIES:
                     product_ids = request.COOKIES['product_ids']
