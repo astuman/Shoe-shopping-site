@@ -122,7 +122,7 @@
           <table class="table table-bordered table-striped">
             <tr>
               <td class="title">
-                <h5>Shoe Shopping Site</h5>
+                <h5>ABC Shoe Shop</h5>
               </td>
 
               <td>
@@ -141,15 +141,14 @@
           <table>
             <tr>
               <td>
-                Customer : <br>{{customerName}}<br><br>
-                Customer Email :<br> {{customerEmail}}
+                Customer : {{customerName}}<br><br>
+                Customer Email : {{customerEmail}}
 
               </td>
 
               <td>
-                Contact Number :<br>
-                {{customerMobile}}<br><br>
-                  Shipment Address :<br> {{shipmentAddress}}
+                Contact Number : {{customerMobile}}<br><br>
+                  Shipment Address : {{shipmentAddress}}
 
               </td>
             </tr>
@@ -164,12 +163,12 @@
             <tr>
               <td>
                 Product Image :<br>
-                 <img src="{% static product_image.url %}" alt="Profile Pic" height="40px" width="40px" /><br><br>
-                Product Price : <br>
-                ${{productPrice}}
+                 <img src="{% static product_image.url %}" alt="Products image" height="40px" width="40px" />
+                 <br><br>
+                Product Price :  ${{productPrice}}
               </td>
               <td>
-                Product: <br> {{productName}}<br><br>
+                Product:  {{productName}}<br><br>
                 Description: <br> {{productDescription}}
               </td>
 
@@ -185,18 +184,12 @@
           <table>
             <tr>
               <td>
-                Order Status :<br><br>
-                  {{orderStatus}}
+                Order Status : {{orderStatus}}
               </td>
             </tr>
           </table>
         </td>
       </tr>
-
-
-      
-
-
     </table>
   </div>
 </body>

@@ -21,14 +21,6 @@ def home_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'shoeshop/index.html',{'products':products,'brand_name':brand_name,'product_count_in_cart':product_count_in_cart})
-    
-# def filter_product(request):
-#     q=request.get("brand_name")
-#     #brand=models.Product.objects.get(filter)
-
-#     brand=models.Product.objects.all().filter(brand_name_icontains=q)
-#     #return HttpResponse(brand)
-#     return render(request, "/", {"brand_name": brand})
 
 def filter_brand(request):
     # whatever user write in search box we get in query
@@ -470,7 +462,7 @@ def send_feedback_view(request):
 #---------------------------------------------------------------------------------
 #------------------------ CUSTOMER RELATED VIEWS START ------------------------------
 #---------------------------------------------------------------------------------
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 @user_passes_test(is_customer)
 def customer_home_view(request):
     products=models.Product.objects.all()
@@ -485,7 +477,7 @@ def customer_home_view(request):
 
 
 # shipment address before placing order
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 def customer_address_view(request):
     # this is for checking whether product is present in cart or not
     # if there is no product in cart we will not show address form
@@ -534,7 +526,7 @@ def customer_address_view(request):
 
 # here we are just directing to this view...actually we have to check whther payment is successful or not
 #then only this view should be accessed
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 def payment_success_view(request):
     # Here we will place order | after successful payment
     # we will fetch customer  mobile, address, Email
@@ -578,7 +570,7 @@ def payment_success_view(request):
 
 
 
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 @user_passes_test(is_customer)
 def my_order_view(request):
     
@@ -626,7 +618,7 @@ def render_to_pdf(template_src, context_dict):
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return
 
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 @user_passes_test(is_customer)
 def download_invoice_view(request,orderID,productID):
     order=models.Orders.objects.get(id=orderID)
@@ -653,14 +645,14 @@ def download_invoice_view(request,orderID,productID):
 
 
 
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 @user_passes_test(is_customer)
 def my_profile_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
     return render(request,'shoeshop/my_profile.html',{'customer':customer})
 
 
-@login_required(login_url='customerlogin')
+@login_required(login_url='login')
 @user_passes_test(is_customer)
 def edit_profile_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)

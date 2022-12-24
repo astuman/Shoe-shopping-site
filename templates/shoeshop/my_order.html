@@ -18,17 +18,17 @@
                       <div class="aside"><img src="{% static product.product_image.url %}" class="img-sm border"></div>
                       <figcaption class="info align-self-center">
 
-                          <p class="title"><strong>Name : </strong>{{product.name}} <br> <strong>Description : </strong>{{product.description}} <br> <strong>Price : </strong>${{product.price}}</p> 
+                          <p class="title"><strong>Product name : </strong>{{product.name}} <br> <strong>Description : </strong>{{product.description}} <br> <strong>Price : </strong>${{product.price}}</p> 
 
                       </figcaption>
 
                   </figure>
                 </li>
                 <li class="col-md-4">
-                    <div class="col"> <strong>Shipment Address:</strong> <br> {{order.address}}</div>
+                    <div class="col"> <strong>Shipment Address:</strong>  {{order.address}}</div>
                 </li>
                 <li class="col-md-4">
-                    <div class="col"> <strong>Status:</strong> <br>
+                    <div class="col"> <strong>Status:</strong>
                     
                         {% if order.status == 'Pending'%}
                         <td> <span class="label label-info" style="font-size: 12px; border-radius: 30px;">{{order.status}}</span></td>
