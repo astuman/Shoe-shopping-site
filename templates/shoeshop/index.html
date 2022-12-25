@@ -2,40 +2,27 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="/static/index.css">
-<style>
 
-.slide-1 {
-background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
-}
-.slide-2 {
-background-image: url("{% static 'product_image/banner-shoe-discount.jpeg' %}");
-}
-.slide-3 {
-background-image: url("{% static 'product_image/big sale.jpeg' %}");
-}
-.slide-4 {
-background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
-}
-</style>
 <div class="row">
-  <div class="col-md-12">
-    <div class="slider-container">
-      <div class="menu">
-        <label for="slide-dot-1"></label>
-        <label for="slide-dot-2"></label>
-        <label for="slide-dot-3"></label>
-        <label for="slide-dot-4"></label>
+  <div class="col-md-12 carousel slide" id= "myslider" data-ride= "carousel">
+    <div class="slider-container carousel-inner">      
+      
+      <div class="item active">
+        <img src="{% static 'product_image/ecom-banner1.JPG' %}">
       </div>
-      <input id="slide-dot-1" type="radio" name="slides" checked>
-        <div class="slide slide-1"></div>
-      
-      <input id="slide-dot-2" type="radio" name="slides">
-        <div class="slide slide-2"></div>
-      
-      <input id="slide-dot-3" type="radio" name="slides">
-        <div class="slide slide-3"></div>
-      <input id="slide-dot-4" type="radio" name="slides">
-        <div class="slide slide-4"></div>
+
+      <div class="item">
+        <img src="{% static 'product_image/ecom-banner1.png' %}">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'product_image/ecom-banner3.JPG' %}">
+      </div>
+
+      <div class="item">
+        <img src="{% static 'product_image/ecom-banner4.JPG' %}">
+      </div>
+
     </div>
   </div>
 </div>
