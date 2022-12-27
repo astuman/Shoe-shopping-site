@@ -156,7 +156,9 @@ body {
 
 .smallsearch {
     margin-left: 15px;
-    margin-top: 15px
+    margin-top: 0px;
+    /* border: solid;
+    border-radius: 20px 0 0 20px; */
 }
 
 .menu {

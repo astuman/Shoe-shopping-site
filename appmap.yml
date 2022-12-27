@@ -1,0 +1,4 @@
+name: SSS
+packages:
+- path: shoeshop
+- path: ecommerce
