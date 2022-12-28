@@ -34,11 +34,12 @@
     transition: 0.25s
 }
 
-.username h4, .password h4{
+.username h4, .thirdpart-login-texth3 , .password h4{
     color: white;
 }
-.username, .password{
+.username, .login-login-text, .password{
     display: inline-block;
+    text-align: left;
 }
 
 .box h1 {
@@ -57,7 +58,7 @@
     border: 0;
     background: none;
     display: block;
-    margin: 50px auto;
+    margin: 20px auto;
     text-align: center;
     border: 2px solid   #3da1c0;
     padding: 14px 40px;
@@ -140,3 +141,4 @@ a.socialIcon:hover,
     transition: all 0.8s;
     transition: all 0.8s
 }
+

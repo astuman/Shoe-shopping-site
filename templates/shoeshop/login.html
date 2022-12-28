@@ -18,18 +18,25 @@
                   {% csrf_token %}
                     <h1>Login</h1>
                     <div class="username">
-                      <h4> Username</h4>
+                      <h4>Account:</h4>
                         {% render_field form.username class="form-control" placeholder="Username" autocomplete="on" %}
                     </div>
                     
                     <div class="password">
-                      <h4>Password</h4>
+                      <h4>Password:</h4>
                       {% render_field form.password class="form-control" placeholder="Password" %}
                     </div>
                       
                      <input type="submit" name="" value="Login" >
-
-                </form>
+                     
+                      <h3 class="thirdpart-login-text" style="text-align: left; color: white; margin:0px 0px;">Sign in with:   
+                                                                  
+                      <a href="#" class="fa fa-linkedin" style="background-color: white; "></a>
+                      <a href="#" class="fa fa-google" style="background-color: white; color: red;"></a> 
+                      <a href="#" class="fa fa-twitter"></a>
+                    </h3>
+                    <h3 style="color: #ffffff; text-align: right; margin: 0px 0px;"><a href="/customersignup" >Join for free </a></h3>
+                  </form>
             </div>
         </div>
     </div>
