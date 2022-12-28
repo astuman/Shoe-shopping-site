@@ -1,21 +1,21 @@
-      body {
+body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    /* background: linear-gradient(to right, #b92b27, #1565c0) */
+    background: linear-gradient(to right, #d6f733, #059fc5, #d6f733)
 }
 
 .box {
     width: 100%;
     padding: 40px;
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
-    background: #3E454C;
+    background: #01b2e7;
     text-align: center;
     transition: 0.25s;
-    margin-top: 100px;
-    border-radius: 50px;
+    margin-top: 40px;
+    border-radius: 15px;
 }
 
 .box input[type="text"],
@@ -25,11 +25,11 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #ffffff;
+    border: 2px solid #fdc8c8;
     padding: 10px 10px;
     width: 250px;
     outline: none;
-    color: white;
+    color: rgb(245, 137, 137);
     border-radius: 24px;
     transition: 0.25s
 }
@@ -42,7 +42,7 @@
 
 .box input[type="text"]:focus,
 .box input[type="password"]:focus {
-    width: 300px;
+    width: 200px;
     border-color: #d3d3d3
 }
 
@@ -52,7 +52,7 @@
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #2ecc71;
+    border: 3px solid #cc2eaa;
     padding: 14px 40px;
     outline: none;
     color: white;
@@ -62,7 +62,7 @@
 }
 
 .box input[type="submit"]:hover {
-    background: #2ecc71
+    background: #cc2eaa
 }
 
 .forgot {

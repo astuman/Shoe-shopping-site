@@ -2,47 +2,61 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="/static/index.css">
+
+<!-- <link rel="stylesheet" href="/static/styles.css"> -->
+<script>
+var img= document.getElementById("imgs")
+var slides = ["/static/images/2023-banner.jpg","/static/images/ecom-banner1.jpg","/static/images/ecom-banner3.JPG"];
+var start = 0;
+function slider(){
+    if (start<slides.length){
+        start=start+1;
+      }else{
+        start=1;
+    }
+    console.log(img);
+    imgs.innerHTML = "<img src="+slides[start-1]+">"
+}
+setInterval(slider,2000);
+</script>
 <style>
 
-.slide-1 {
-background-image: url("{% static 'product_image/discount-banner.jpg' %}");
+.slider {
+  width: 100%;
+  height: 30%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  margin: 5px auto;
+  /* position: relative; */
+  overflow: hidden; 
+  text-align: center;
+  /* max-width: 100%; */
+  
+  /* position: absolute; */
+  top: 0;
+  left: 100%;
+  z-index: 10;
+  /* padding: 8em 1em 0; */
+  background-size: cover;
+  transition: left 0s .75s;
 }
-.slide-2 {
-background-image: url("{% static 'product_image/2023-banner.jpg' %}");
+#imgs{
+  width: 100%;
+  height: 20%;
+  max-width: 100%;
+
+  object-fit: cover;
+  transition: left 0s .75s;
 }
-.slide-3 {
-background-image: url("{% static 'product_image/big sale.jpeg' %}");
-}
-.slide-4 {
-background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
+.img{
+  margin-top: 0;
 }
 
 </style>
-<div class="row">
-  <div class="col-md-12">
-    <div class="slider-container">
-      <div class="menu">
-        <label for="slide-dot-1"></label>
-        <label for="slide-dot-2"></label>
-        <label for="slide-dot-3"></label>
-        <label for="slide-dot-4"></label>
+    <div class="slider">
+      <div id="imgs">
+          <img src="/static/images/banner-running-shoe.jpeg" alt="">
       </div>
-      
-      <input id="slide-dot-1" type="radio" name="slides" checked>
-        <div class="slide slide-1"></div>
-      
-      <input id="slide-dot-2" type="radio" name="slides">
-        <div class="slide slide-2"></div>
-      
-      <input id="slide-dot-3" type="radio" name="slides">
-        <div class="slide slide-3"></div>
-      <input id="slide-dot-4" type="radio" name="slides">
-        <div class="slide slide-4"></div>
-       
     </div>
-  </div>
-</div>
-
 
 {%if products%}
 
@@ -55,7 +69,7 @@ background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
       <!-- card1 -->
       <div class="column">
         <div class="container page-wrapper" style="width: 450px;">
-          <div {{p.brand_name}} class="page-inner">
+          <div class="page-inner">
             <div class="row">
               <div class="el-wrapper">
                 <div class="box-up">
@@ -68,15 +82,13 @@ background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
                     <div class="a-size">{{p.description}}<br>
                       Size:  {{p.size}}
                     </div>
-                    
                   </div>
-                 
                 </div>
-  
                 <div class="box-down">
                   <div class="h-bg">
                     <div class="h-bg-inner"></div>
                   </div>
+                  {{p.brand_name}}
                   <a class="cart" href="{% url 'add-to-cart' p.id  %}">
                     <span class="price">${{p.price}}</span>
                     <span class="add-to-cart">
@@ -88,7 +100,7 @@ background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
             </div>
           </div>
         </div>
-      </div>
+        </div>
 <!-- card1 end -->
 {% if forloop.counter|divisibleby:"3" %}
     </div>
@@ -103,13 +115,5 @@ background-image: url("{% static 'product_image/banner-footware.jpeg' %}");
 <h3 style="text-align:center; color:#3E454C;">No Search Found</h3>
 {%endif%}
 
-
-    {%if messages %}
-    {%for message in messages%}
-    alert('{{message}}');
-    {% endfor %}
-    {% endif %}
-
 <br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock content %}

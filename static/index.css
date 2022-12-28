@@ -75,7 +75,6 @@ body {
   transform: translateY(-50%);
   color: #f3f3f3;
 }
-
 .el-wrapper:hover .add-to-cart {
   left: 50%;
 }
@@ -376,3 +375,4 @@ img {
 .slide-4 {
   background-image: url("{% static 'images/ecom-banner3.jpg' %}");
 }
+
