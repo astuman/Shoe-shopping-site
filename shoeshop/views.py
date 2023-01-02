@@ -114,7 +114,8 @@ def admin_dashboard_view(request):
 @login_required(login_url='adminlogin')
 def view_customer_view(request):
     customers=models.Customer.objects.all()
-    return render(request,'shoeshop/view_customer.html',{'customers':customers})
+    return render(request,'shoeshop/view_customer.html',{'customers':customers})    
+
 
 # admin delete customer
 @login_required(login_url='adminlogin')
@@ -148,8 +149,8 @@ def update_customer_view(request,pk):
 @login_required(login_url='adminlogin')
 def admin_products_view(request):
     products=models.Product.objects.all()
-    return render(request,'shoeshop/admin_products.html',{'products':products})
 
+    return render(request,'shoeshop/admin_products.html',{'products':products})
 
 # admin add product by clicking on floating button
 @login_required(login_url='adminlogin')
