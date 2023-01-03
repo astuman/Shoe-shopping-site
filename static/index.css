@@ -42,6 +42,45 @@ body {
   vertical-align: middle;
 }
 
+.light
+{
+  position: relative;
+  width: 360px;
+ 
+  background-color: white;
+  overflow: hidden;
+}
+
+.light:hover::before
+{
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 300%;
+  display: flex;
+  background: linear-gradient(#00ccff,#d400d4);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate
+ {
+  0%
+   {
+    transform: rotate(0deg);
+   }
+   100%
+   {
+    transform: rotate(360deg);
+   }
+}
+
+.light::after{
+  content:'';
+  position: absolute;
+  inset: 4px;
+  
+}
+
 .el-wrapper {
   width: 360px;
   padding: 15px;
@@ -221,6 +260,7 @@ body {
   left: 0;
   /* font-family: 'Lato', sans-serif; */
   font-weight: 700;
+  background-color: white
 }
 
 .cart .price {
