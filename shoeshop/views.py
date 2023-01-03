@@ -44,7 +44,7 @@ def filter_brand(request):
 
 
 
-#for showing login button for admin(by sumit)
+#for showing login button for admin
 def adminclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
