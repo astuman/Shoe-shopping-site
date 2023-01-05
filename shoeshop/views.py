@@ -67,7 +67,7 @@ def customer_signup_view(request):
             customer.save()
             my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
             my_customer_group[0].user_set.add(user)
-        return HttpResponseRedirect('customerlogin')
+        return HttpResponseRedirect('login')
     return render(request,'shoeshop/customersignup.html',context=mydict)
 
 #-----------for checking user iscustomer

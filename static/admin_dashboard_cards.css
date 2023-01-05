@@ -23,36 +23,39 @@
   }
 
   .market-update-block.clr-block-1 {
-    background: #DC3545;
+    background: rgb(188, 188, 188);
     margin-right: 0.8em;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.3);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
+    border-radius:20px;
   }
 
   .market-update-block.clr-block-2 {
-    background: #28A745;
+    background: rgb(188, 188, 188);
     margin-right: 0.8em;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.3);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
+    border-radius:20px;
   }
 
   .market-update-block.clr-block-3 {
-    background: #6C757D;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    background: rgb(188, 188, 188);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3), 0 2px 10px 0 rgba(0, 0, 0, 0.3);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
+    border-radius:20px;
   }
 
   .market-update-block.clr-block-1:hover {
-    background: #3C3C3C;
+    background: rgb(229, 229, 229);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -60,7 +63,7 @@
   }
 
   .market-update-block.clr-block-2:hover {
-    background: #3C3C3C;
+    background: rgb(229, 229, 229);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
@@ -68,7 +71,7 @@
   }
 
   .market-update-block.clr-block-3:hover {
-    background: #3C3C3C;
+    background: rgb(229, 229, 229);
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
