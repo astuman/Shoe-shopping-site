@@ -67,7 +67,7 @@ def customer_signup_view(request):
             customer.save()
             my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
             my_customer_group[0].user_set.add(user)
-        return HttpResponseRedirect('customerlogin')
+        return HttpResponseRedirect('login')
     return render(request,'shoeshop/customersignup.html',context=mydict)
 
 #-----------for checking user iscustomer
@@ -573,7 +573,6 @@ def payment_success_view(request):
 @login_required(login_url='login')
 @user_passes_test(is_customer)
 def my_order_view(request):
-    
     customer=models.Customer.objects.get(user_id=request.user.id)
     orders=models.Orders.objects.all().filter(customer_id = customer)
     ordered_products=[]

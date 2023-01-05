@@ -1,4 +1,4 @@
-media="screen", body, html  {
+body, html  {
   height: 100%;
 }
 
@@ -44,6 +44,7 @@ body {
   margin: 15px auto;
   background-color: #fff;
   border-radius: 15px;
+  border-color: linear-gradient(#aaff, #ffaaaa);
 }
 
 @media (max-width: 991px) {

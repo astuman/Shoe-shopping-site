@@ -46,8 +46,9 @@ body {
   width: 360px;
   padding: 15px;
   margin: 15px auto;
-  background-color: #fff;
+  background-color: rgba(255, 251, 251, 0.897);
   border-radius: 15px;
+  border-color: linear-gradient(#c5d305, rgba(192, 192, 27, 0.667))
 }
 
 @media (max-width: 991px) {

@@ -3,6 +3,7 @@
 {% block content %}
 <link rel="stylesheet" href="/static/index.css">
 
+
 <!-- <link rel="stylesheet" href="/static/styles.css"> -->
 <script>
 var img= document.getElementById("imgs")
@@ -64,13 +65,14 @@ setInterval(slider,2000);
 <br>
 
 <!-- products data start -->
-  <div class="row">
+  <div class="row" style="padding-bottom: 50px;">
       {% for p in products %}
       <!-- card1 -->
-      <div class="column">
-        <div class="container page-wrapper" style="width: 450px;">
+      
+      <div class="column" >
+        <div class="container page-wrapper" style="width: 350px;">
           <div class="page-inner">
-            <div class="row">
+            <div class="row" style="padding-bottom: 50px;">
               <div class="el-wrapper">
                 <div class="box-up">
                   <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
@@ -105,7 +107,7 @@ setInterval(slider,2000);
 {% if forloop.counter|divisibleby:"3" %}
     </div>
 
-  <div class="row">
+  <div class="row" style="padding-bottom: 50px;">
           <br><br><br>
 {% endif %}
   {% endfor %}
