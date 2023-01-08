@@ -8,6 +8,9 @@
     font-family: sans-serif;
 
   }
+  .nav-link{
+    color: #25d366;
+  }
 
       /*---------------------------------------
          Social section
@@ -36,7 +39,7 @@
 
       .fa:hover {
         opacity: 0.5;
-        text-decoration: none;
+        /* text-decoration: none; */
       }
 
       .fa-facebook {

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 class Customer(models.Model):
+    """Customer model"""
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic= models.ImageField(upload_to='profile_pic/CustomerProfilePic/',null=True,blank=True)
     address = models.CharField(max_length=40)
@@ -17,6 +17,7 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
+    """Product model"""
     name=models.CharField(max_length=40)
     brand_name= models.ForeignKey("Brand", on_delete=models.CASCADE,null=False)
     category= models.ForeignKey('Category', on_delete=models.CASCADE,null=True)
@@ -30,6 +31,7 @@ class Product(models.Model):
 
 
 class Orders(models.Model):
+    """Orders model"""
     STATUS =(
         ('Pending','Pending'),
         ('Order Confirmed','Order Confirmed'),
@@ -43,19 +45,14 @@ class Orders(models.Model):
     status=models.CharField(max_length=50,null=True,choices=STATUS)
 
 
-class Feedback(models.Model):
-    name=models.CharField(max_length=40)
-    feedback=models.CharField(max_length=500)
-    date= models.DateField(auto_now_add=True,null=True)
-    def __str__(self):
-        return self.name
-
 class Brand(models.Model):
+    """Brand model"""
     brand_name = models.CharField(max_length=40)
     def __str__(self):
         return self.brand_name
 
 class Category(models.Model):
+    """category Model"""
     category = models.CharField(max_length=100)
     def __str__(self):
         return self.category

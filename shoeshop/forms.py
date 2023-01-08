@@ -4,52 +4,60 @@ from . import models
 
 
 class CustomerUserForm(forms.ModelForm):
+    """To take information about name, username and password """
     class Meta:
-        model=User
-        fields=['first_name','last_name','username','password']
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'password']
         widgets = {
-        'password': forms.PasswordInput()
+            'password': forms.PasswordInput()
         }
-        
+
+
 class CustomerForm(forms.ModelForm):
+    """To take information about address, mobile and picture"""
     class Meta:
-        model=models.Customer
-        fields=['address','mobile','profile_pic']
+        model = models.Customer
+        fields = ['address', 'mobile', 'profile_pic']
+
 
 class ProductForm(forms.ModelForm):
+    """product information"""
     class Meta:
-        model=models.Product
-        fields=['name','brand_name','category','size','quantity','price','description','product_image']
+        model = models.Product
+        fields = [
+            'name',
+            'brand_name',
+            'category',
+            'size',
+            'quantity',
+            'price',
+            'description',
+            'product_image']
 
-#address of shipment
+
 class AddressForm(forms.Form):
+    """addres of shipment """
     Email = forms.EmailField()
-    Mobile= forms.IntegerField()
+    Mobile = forms.IntegerField()
     Address = forms.CharField(max_length=500)
 
-class FeedbackForm(forms.ModelForm):
-    class Meta:
-        model=models.Feedback
-        fields=['name','feedback']
 
-#for updating status of order
 class OrderForm(forms.ModelForm):
+    """for updating status of order"""
     class Meta:
-        model=models.Orders
-        fields=['status']
+        model = models.Orders
+        fields = ['status']
 
-#for contact us page
-class ContactusForm(forms.Form):
-    Name = forms.CharField(max_length=30)
-    Email = forms.EmailField()
-    Message = forms.CharField(max_length=500,widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
 
 class brandForm(forms.ModelForm):
+    """for brand form"""
     class Meta:
-        model=models.Brand
-        fields=['brand_name']
+        model = models.Brand
+        fields = ['brand_name']
+
 
 class categoryForm(forms.ModelForm):
+    """for category form"""
     class Meta:
-        model=models.Category
-        fields=['category']
+        model = models.Category
+        fields = ['category']

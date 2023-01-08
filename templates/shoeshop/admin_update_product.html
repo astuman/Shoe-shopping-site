@@ -28,20 +28,34 @@
             </div>
             <div class="form-group">
               <label for="">Product Qty</label>
-              {% render_field productForm.name class="form-control" placeholder="Product Qty" %}
+              {% render_field productForm.quantity class="form-control" placeholder="Product Qty" %}
             </div>
-            <div class="form-group">
-              <label for="">Product Description</label>
-              {% render_field productForm.description class="form-control" placeholder="Description" %}
-            </div>
-          </div>
-          <div class="col-md-6">
             <div class="form-group">
               <label for="">Product Price</label>
               {% render_field productForm.price class="form-control" placeholder="Price" %}
             </div>
             <div class="form-group">
+              <label for="">Size</label>
+              {% render_field productForm.size class="form-control" placeholder="Size" %}
+            </div>
+            </div>
+            <div class="col-md-6">        
+            
+            <div class="form-group">
+              <label for="">Brand name</label>
+              {% render_field productForm.brand_name class="form-control" placeholder="brand" %}
+            </div>
+            <div class="form-group">
+              <label for="">Category</label>
+              {% render_field productForm.category class="form-control" placeholder="category" %}
+            </div>
+            <div class="form-group">
+              <label for="">Product Image</label>
               {% render_field productForm.product_image class="form-control" placeholder="product_image" %}
+            </div>
+            <div class="form-group">
+              <label for="">Product Description</label>
+              {% render_field productForm.description class="form-control" placeholder="Description" %}
             </div>
 
 
@@ -53,7 +67,7 @@
   </div>
 </form>
 <!--
-developed By : sumit kumar
+developed By : Astewul, Beka, Natnael
 -->
 
 {% endblock content %}

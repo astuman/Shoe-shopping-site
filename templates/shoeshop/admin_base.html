@@ -7,12 +7,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/admin_base.css">
+  <style>
+      .nav-item{
+        color: white;
+      }
+      .links{
+        color: white;
+      }
+  </style>
 </head>
 
 <body>
 
   <div class="bs-example">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:rgb(0, 112, 146)">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:rgb(0, 112, 146);">
       <a href="/" class="navbar-brand">Admin Panel</a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -26,8 +34,6 @@
           <a href="/admin-brands" class="nav-item nav-link">Manage Brand</a>
           <a href="/admin-categories" class="nav-item nav-link">Manage Category</a>
         </div>
-
-        
         <div class="navbar-nav navbar-right">
           <a href="/logout" class="nav-item nav-link"> Logout</a>
         </div>
