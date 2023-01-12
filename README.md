@@ -18,11 +18,11 @@ A template contains the static parts of the desired HTML output as well as some 
 
 
 # Installation
-  Install the Requirements: pip install -r requirements.txt
-  Then, make database migrations: python manage.py makemigrations
-  python manage.py migrate
-  And finally, run the application: python manage.py runserver
-  Now enter following URL in Your Browser Installed On Your Pc
+  Install the Requirements: pip install -r requirements.txt </br>
+  Then, make database migrations: python manage.py makemigrations </br>
+  python manage.py migrate </br>
+  And finally, run the application: python manage.py runserver</br>
+  Now enter following URL in Your Browser Installed On Your Pc </br>
 http://127.0.0.1:8000/
 # Usage
   For Admin Account, please create one with superuser!
